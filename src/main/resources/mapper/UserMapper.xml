@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.UserMapper">
+
+<resultMap id="users" type="com.example.user.model.Users">
+   <id column="user_id" property="userId" />
+    <result column="user_name" property="userName" />
+    <result column="mailAdrres" property="mailAdrres" />
+    <result column="password" property="password" />
+
+</resultMap>
+
+  <!-- ユーザー1件登録 -->
+<insert id="insertOne">
+  insert into users(
+      UserID
+    , UserName
+    , MailAdrres
+    , Password
+  )
+  values (
+      #{userId}
+    , #{userName}
+    , #{mailAdrres}
+    , #{password}
+  )
+</insert>
+
+  
+  
+</mapper>
