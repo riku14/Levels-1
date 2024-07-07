@@ -9,5 +9,6 @@ public class Users {
 	private String userName;
 	private String mailAdrres;
 	private String password;
+    private String role;	
 
 }

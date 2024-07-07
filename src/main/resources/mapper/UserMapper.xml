@@ -28,6 +28,16 @@
   )
 </insert>
 
+  <!-- ログインユーザー情報取得 -->
+  <select id="findLoginUser" resultType="Users">
+    select
+      *
+    from
+      Users
+    where
+      UserID = #{userId}
+  </select>
+
   
   
 </mapper>

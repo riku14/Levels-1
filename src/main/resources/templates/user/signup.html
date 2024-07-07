@@ -12,7 +12,7 @@
   <title>ユーザー登録</title>
 </head>
 <body class="bg-light">
-  <form id="signup-form" method="post" action="/user/signup" class="form-signup" th:object="${signupForm}">
+  <form id="signup-form" method="post" th:action="@{/user/signup}" class="form-signup" th:object="${signupForm}">
     <h1 class="text-center">ユーザー登録</h1>
     <!-- ユーザーID -->
     <div class="form-group">
@@ -38,6 +38,8 @@
       <input type="text" class="form-control" th:field="*{password}" th:errorclass="is-invalid"/>
       <div class="invalid-feedback" th:errors="*{password}"></div>
     </div>
+    <!-- 役職 -->
+    
 
     <!-- 登録ボタン -->
     <input type="submit" value="ユーザー登録" class="btn btn-primary w-100 mt-3" />
