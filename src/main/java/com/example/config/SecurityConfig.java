@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @EnableWebSecurity
@@ -45,7 +46,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
             .authorizeRequests()
                 .antMatchers("/login").permitAll() //直リンクOK
                 .antMatchers("/user/signup").permitAll() //直リンクOK
-//                .antMatchers("/admin").hasAuthority("ROLE_ADMIN") // 権限制御
+                .antMatchers("/user/signup").hasAuthority("admin") // 権限制御
                 .anyRequest().authenticated(); // それ以外は直リンクNG
         
         // ログイン処理
@@ -57,6 +58,13 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                 .usernameParameter("userId") // ログインページのユーザーID
                 .passwordParameter("password") // ログインページのパスワード
                 .defaultSuccessUrl("/user/home", true); // 成功後の遷移先
+        
+        // ログアウト処理
+        http
+            .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout");
     }
     
     /** 認証の設定 */
@@ -82,6 +90,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
             .userDetailsService(userDetailsService)
             .passwordEncoder(encoder);
     }
+    
+    
 
     
     

@@ -39,6 +39,10 @@
       <div class="invalid-feedback" th:errors="*{password}"></div>
     </div>
     <!-- 役職 -->
+        <label for = "role">管理者</label>
+            <input type="radio" th:field="*{role}" value="admin" th:errorclass="is-invalid"/>
+        <label for = "role">一般</label>
+           <input type="radio"  th:field="*{role}" value="general" th:errorclass="is-invalid"/>
     
 
     <!-- 登録ボタン -->

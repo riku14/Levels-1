@@ -19,12 +19,14 @@
     , UserName
     , MailAdrres
     , Password
+    , role
   )
   values (
       #{userId}
     , #{userName}
     , #{mailAdrres}
     , #{password}
+    , #{role} 
   )
 </insert>
 
