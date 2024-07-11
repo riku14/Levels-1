@@ -22,10 +22,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService service;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userID) throws UsernameNotFoundException {
 
         // ユーザー情報取得
-        Users loginUser = service.getLoginUser(username);
+        Users loginUser = service.getLoginUser(userID);
 
         // ユーザーが存在しない場合
         if(loginUser == null) {
